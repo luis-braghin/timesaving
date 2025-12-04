@@ -214,13 +214,10 @@ function About() {
           <div className="grid gap-6">
             {founders.map((founder, index) => (
               <div
-                key={founder.name}
-                className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-6 flex items-center gap-6"
-              >
-                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00d4ff]/20 to-[#7c3aed]/20 flex items-center justify-center border border-[#1e1e2e]">
-                  <Users className="w-7 h-7 text-[#00d4ff]" />
-                </div>
-                <div>
+  key={founder.name}
+  className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-6"
+>
+  <div>
                   <h3 className="font-display font-semibold text-xl text-white mb-1">
                     {founder.name}
                   </h3>
@@ -424,18 +421,27 @@ function Contact() {
   }
 
   const handleSubmit = async (e) => {
-    e.preventDefault()
-    setIsSubmitting(true)
+  e.preventDefault()
+  setIsSubmitting(true)
+  
+  try {
+    await fetch('https://planejamentocomercialtvx.app.n8n.cloud/webhook/ts', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    })
     
-    // Simula envio - substitua pela integração real
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    setIsSubmitting(false)
     setSubmitted(true)
     setFormData({ name: '', email: '', company: '', message: '' })
-    
     setTimeout(() => setSubmitted(false), 5000)
+  } catch (error) {
+    alert('Erro ao enviar. Tente novamente ou use o WhatsApp.')
   }
+  
+  setIsSubmitting(false)
+}
 
   const whatsappNumber = '5519981250530'
   const whatsappMessage = encodeURIComponent('Olá! Vim pelo site da Time Saving Tech e gostaria de saber mais sobre os serviços de vocês.')
