@@ -176,12 +176,12 @@ function About() {
     {
       name: 'Luis Braghin',
       role: 'Co-fundador',
-      description: 'Especialista em automação de processos e integração de sistemas empresariais.',
+      description: 'Responsável pela engenharia de soluções da Time Saving Tech. Economista pela UNESP com experiência em estruturação tecnológica no setor financeiro, incluindo áreas de Riscos e Planejamento Comercial. Trabalha com o desenvolvimento de sistemas de IA baseados em RAG (busca semântica, embeddings, bases vetoriais), automação de processos via n8n e Python, e integrações de APIs.',
     },
     {
       name: 'Felipe Von',
       role: 'Co-fundador',
-      description: 'Focado em soluções de inteligência artificial e desenvolvimento de agentes autônomos.',
+      description: 'Responsável pela arquitetura de soluções e estratégia de negócios da Time Saving Tech. Construiu expertise em análise de crédito corporativo e inteligência de negócios, liderando expansão no setor de tecnologia há mais de 10 anos. Especialista em growth, go-to-market e estruturação de soluções corporativas.',
     },
   ]
 
