@@ -179,7 +179,7 @@ function About() {
       description: 'Responsável pela engenharia de soluções da Time Saving Tech. Economista com experiência em estruturação tecnológica no setor bancário, incluindo áreas de Riscos e Planejamento Comercial. Especialista em automação inteligente de processos, integrações via API e desenvolvimento de sistemas RAG. Trabalha com Python, n8n e JavaScript para construir soluções que processam grandes volumes de dados e operam de forma autônoma.',
     },
     {
-      name: 'Felipe Von',
+      name: 'Felipe Von Pressentin',
       role: 'Co-fundador',
       description: 'Responsável pela arquitetura de soluções e estratégia de negócios da Time Saving Tech. Construiu expertise em análise de crédito corporativo e inteligência de negócios, liderando expansão no setor de tecnologia há mais de 10 anos. Especialista em growth, go-to-market e estruturação de soluções corporativas.',
     },
