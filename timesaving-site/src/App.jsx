@@ -408,11 +408,12 @@ function Clients() {
 // Contact Section
 function Contact() {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    company: '',
-    message: '',
-  })
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  message: '',
+})
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -502,7 +503,29 @@ function Contact() {
                   placeholder="seu@email.com"
                 />
               </div>
-              
+              placeholder="seu@email.com"
+            />
+          </div>
+          
+          <div>
+            <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
+              Telefone *
+            </label>
+            <input
+              type="tel"
+              id="phone"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              required
+              placeholder="(11) 99999-9999"
+            />
+          </div>
+
+          <div>
+            <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
+              Empresa
+            </label>
               <div>
                 <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
                   Empresa
