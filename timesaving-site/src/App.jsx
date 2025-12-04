@@ -1,0 +1,667 @@
+import React, { useState, useEffect } from 'react'
+import { 
+  Menu, 
+  X, 
+  Zap, 
+  Brain, 
+  Workflow, 
+  BarChart3, 
+  Bot, 
+  Code2,
+  Mail, 
+  Phone,
+  ArrowRight,
+  ChevronDown,
+  Sparkles,
+  Clock,
+  Target,
+  Users
+} from 'lucide-react'
+
+// Navigation Component
+function Navigation() {
+  const [isScrolled, setIsScrolled] = useState(false)
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const navLinks = [
+    { href: '#inicio', label: 'Início' },
+    { href: '#servicos', label: 'Serviços' },
+    { href: '#clientes', label: 'Clientes' },
+    { href: '#contato', label: 'Contato' },
+  ]
+
+  return (
+    <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isScrolled ? 'bg-[#0a0a0f]/95 backdrop-blur-md border-b border-[#1e1e2e]' : 'bg-transparent'
+    }`}>
+      <div className="max-w-7xl mx-auto px-6 py-4">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <a href="#inicio" className="flex items-center gap-3 group">
+            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#00d4ff] to-[#7c3aed] flex items-center justify-center">
+              <Clock className="w-5 h-5 text-white" />
+            </div>
+            <span className="font-display font-bold text-xl text-white group-hover:text-[#00d4ff] transition-colors">
+              Time Saving<span className="text-[#00d4ff]">.</span>
+            </span>
+          </a>
+
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                className="nav-link text-[#8b8b9e] hover:text-white transition-colors font-medium"
+              >
+                {link.label}
+              </a>
+            ))}
+            <a href="#contato" className="btn-primary text-sm">
+              Fale Conosco
+            </a>
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden text-white p-2"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {isMobileMenuOpen && (
+          <div className="md:hidden mt-4 pb-4 border-t border-[#1e1e2e] pt-4">
+            <div className="flex flex-col gap-4">
+              {navLinks.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  className="text-[#8b8b9e] hover:text-white transition-colors font-medium py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </a>
+              ))}
+              <a href="#contato" className="btn-primary text-sm text-center mt-2">
+                Fale Conosco
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+    </nav>
+  )
+}
+
+// Hero Section
+function Hero() {
+  return (
+    <section id="inicio" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-grid">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-radial"></div>
+      <div className="float-element w-96 h-96 bg-[#00d4ff] top-20 -left-48 animate-float"></div>
+      <div className="float-element w-72 h-72 bg-[#7c3aed] bottom-20 -right-36 animate-float" style={{ animationDelay: '-3s' }}></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
+        {/* Badge */}
+        <div className="inline-flex items-center gap-2 bg-[#12121a] border border-[#1e1e2e] rounded-full px-4 py-2 mb-8 animate-fade-in-up opacity-0">
+          <Sparkles className="w-4 h-4 text-[#00d4ff]" />
+          <span className="text-sm text-[#8b8b9e]">Transformando negócios com tecnologia</span>
+        </div>
+
+        {/* Main headline */}
+        <h1 className="font-display font-bold text-5xl md:text-7xl lg:text-8xl text-white mb-6 animate-fade-in-up opacity-0 stagger-1">
+          Economize{' '}
+          <span className="gradient-text">tempo</span>
+          <br />
+          Multiplique{' '}
+          <span className="gradient-text">resultados</span>
+        </h1>
+
+        {/* Subheadline */}
+        <p className="text-xl md:text-2xl text-[#8b8b9e] max-w-3xl mx-auto mb-12 animate-fade-in-up opacity-0 stagger-2">
+          Desenvolvemos soluções em <span className="text-white">automação</span> e{' '}
+          <span className="text-white">inteligência artificial</span> que eliminam 
+          tarefas repetitivas e potencializam sua operação.
+        </p>
+
+        {/* CTAs */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up opacity-0 stagger-3">
+          <a href="#contato" className="btn-primary inline-flex items-center justify-center gap-2">
+            Agende uma conversa
+            <ArrowRight className="w-5 h-5" />
+          </a>
+          <a href="#servicos" className="btn-secondary inline-flex items-center justify-center gap-2">
+            Conheça nossos serviços
+          </a>
+        </div>
+
+        {/* Stats */}
+        <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto mt-20 animate-fade-in-up opacity-0 stagger-4">
+          <div className="text-center">
+            <div className="font-display font-bold text-4xl text-[#00d4ff] mb-2">70%</div>
+            <div className="text-sm text-[#8b8b9e]">Redução de tempo</div>
+          </div>
+          <div className="text-center">
+            <div className="font-display font-bold text-4xl text-[#00d4ff] mb-2">24/7</div>
+            <div className="text-sm text-[#8b8b9e]">Automação contínua</div>
+          </div>
+          <div className="text-center">
+            <div className="font-display font-bold text-4xl text-[#00d4ff] mb-2">100%</div>
+            <div className="text-sm text-[#8b8b9e]">Personalizado</div>
+          </div>
+        </div>
+
+        {/* Scroll indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce">
+          <ChevronDown className="w-6 h-6 text-[#8b8b9e]" />
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// About Section
+function About() {
+  const founders = [
+    {
+      name: 'Luis Braghin',
+      role: 'Co-fundador',
+      description: 'Especialista em automação de processos e integração de sistemas empresariais.',
+    },
+    {
+      name: 'Felipe Von',
+      role: 'Co-fundador',
+      description: 'Focado em soluções de inteligência artificial e desenvolvimento de agentes autônomos.',
+    },
+  ]
+
+  return (
+    <section className="relative py-32 bg-[#050508]">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Text content */}
+          <div>
+            <span className="font-mono text-[#00d4ff] text-sm tracking-wider uppercase mb-4 block">
+              // Quem Somos
+            </span>
+            <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-6">
+              Tecnologia com{' '}
+              <span className="gradient-text">propósito</span>
+            </h2>
+            <p className="text-lg text-[#8b8b9e] mb-8 leading-relaxed">
+              A <span className="text-white font-semibold">Time Saving Tech</span> nasceu da 
+              convicção de que empresas podem fazer mais com menos — menos tempo desperdiçado, 
+              menos trabalho manual, menos erros humanos. Combinamos expertise técnica com 
+              entendimento de negócios para entregar soluções que realmente funcionam.
+            </p>
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-1 bg-gradient-to-r from-[#00d4ff] to-[#7c3aed] rounded-full"></div>
+              <span className="text-[#8b8b9e]">Fundada em 2025</span>
+            </div>
+          </div>
+
+          {/* Founders */}
+          <div className="grid gap-6">
+            {founders.map((founder, index) => (
+              <div
+                key={founder.name}
+                className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-6 flex items-center gap-6"
+              >
+                <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00d4ff]/20 to-[#7c3aed]/20 flex items-center justify-center border border-[#1e1e2e]">
+                  <Users className="w-7 h-7 text-[#00d4ff]" />
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold text-xl text-white mb-1">
+                    {founder.name}
+                  </h3>
+                  <p className="text-[#00d4ff] text-sm font-medium mb-2">{founder.role}</p>
+                  <p className="text-[#8b8b9e] text-sm">{founder.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Services Section
+function Services() {
+  const services = [
+    {
+      icon: Workflow,
+      title: 'Automação de Processos',
+      description: 'Eliminamos tarefas repetitivas com RPA, n8n, Power Automate e soluções customizadas que se integram ao seu fluxo de trabalho.',
+      tags: ['RPA', 'n8n', 'Power Automate', 'Workflows'],
+    },
+    {
+      icon: Brain,
+      title: 'Soluções com IA',
+      description: 'Implementamos RAG, chatbots inteligentes e análise de dados avançada para extrair insights e automatizar decisões.',
+      tags: ['RAG', 'Chatbots', 'NLP', 'Machine Learning'],
+    },
+    {
+      icon: Bot,
+      title: 'Agentes de IA',
+      description: 'Desenvolvemos agentes autônomos que executam tarefas complexas, aprendem com interações e se adaptam ao seu negócio.',
+      tags: ['Agentes Autônomos', 'LLMs', 'Automação Cognitiva'],
+    },
+    {
+      icon: Code2,
+      title: 'Integrações & APIs',
+      description: 'Conectamos sistemas, bancos de dados e aplicações para criar um ecossistema digital unificado e eficiente.',
+      tags: ['REST APIs', 'Webhooks', 'ETL', 'Middleware'],
+    },
+    {
+      icon: BarChart3,
+      title: 'Dashboards & BI',
+      description: 'Criamos painéis interativos e relatórios automatizados para visibilidade total das suas operações e métricas.',
+      tags: ['Power BI', 'Dashboards', 'KPIs', 'Analytics'],
+    },
+    {
+      icon: Zap,
+      title: 'Consultoria Técnica',
+      description: 'Analisamos sua operação e identificamos oportunidades de automação e otimização com retorno mensurável.',
+      tags: ['Assessment', 'Roadmap', 'ROI', 'Estratégia'],
+    },
+  ]
+
+  return (
+    <section id="servicos" className="relative py-32 bg-[#0a0a0f] overflow-hidden">
+      <div className="absolute inset-0 bg-grid opacity-50"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <span className="font-mono text-[#00d4ff] text-sm tracking-wider uppercase mb-4 block">
+            // Nossos Serviços
+          </span>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-6">
+            Soluções que{' '}
+            <span className="gradient-text">transformam</span>
+          </h2>
+          <p className="text-lg text-[#8b8b9e] max-w-2xl mx-auto">
+            Da automação simples até agentes de IA complexos, entregamos tecnologia 
+            que resolve problemas reais e gera resultados tangíveis.
+          </p>
+        </div>
+
+        {/* Services grid */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {services.map((service, index) => (
+            <div
+              key={service.title}
+              className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-8 group"
+            >
+              <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-[#00d4ff]/10 to-[#7c3aed]/10 flex items-center justify-center mb-6 border border-[#1e1e2e] group-hover:border-[#00d4ff]/30 transition-colors">
+                <service.icon className="w-7 h-7 text-[#00d4ff]" />
+              </div>
+              <h3 className="font-display font-semibold text-xl text-white mb-3">
+                {service.title}
+              </h3>
+              <p className="text-[#8b8b9e] mb-6 leading-relaxed">
+                {service.description}
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {service.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="text-xs font-mono px-3 py-1 rounded-full bg-[#1e1e2e] text-[#8b8b9e] border border-[#1e1e2e]"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Clients Section
+function Clients() {
+  // Array de clientes - fácil de expandir
+  const clients = [
+    {
+      name: 'Escritório de Advocacia BBL',
+      logo: null, // Pode adicionar URL do logo depois
+    },
+    // Adicione mais clientes aqui:
+    // { name: 'Nome da Empresa', logo: '/path/to/logo.png' },
+  ]
+
+  return (
+    <section id="clientes" className="relative py-32 bg-[#050508]">
+      <div className="max-w-7xl mx-auto px-6">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <span className="font-mono text-[#00d4ff] text-sm tracking-wider uppercase mb-4 block">
+            // Nossos Clientes
+          </span>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-6">
+            Empresas que{' '}
+            <span className="gradient-text">confiam</span>
+            {' '}em nós
+          </h2>
+          <p className="text-lg text-[#8b8b9e] max-w-2xl mx-auto">
+            Parcerias construídas com resultados concretos e comprometimento com a excelência.
+          </p>
+        </div>
+
+        {/* Clients grid */}
+        <div className="flex flex-wrap justify-center gap-8">
+          {clients.map((client, index) => (
+            <div
+              key={client.name}
+              className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-8 min-w-[280px] flex items-center justify-center"
+            >
+              {client.logo ? (
+                <img
+                  src={client.logo}
+                  alt={client.name}
+                  className="max-h-16 max-w-[200px] object-contain filter brightness-90 hover:brightness-100 transition-all"
+                />
+              ) : (
+                <div className="text-center">
+                  <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00d4ff]/10 to-[#7c3aed]/10 flex items-center justify-center mx-auto mb-4 border border-[#1e1e2e]">
+                    <Target className="w-8 h-8 text-[#00d4ff]" />
+                  </div>
+                  <span className="font-display font-semibold text-white text-lg">
+                    {client.name}
+                  </span>
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+
+        {/* CTA */}
+        <div className="text-center mt-16">
+          <p className="text-[#8b8b9e] mb-6">
+            Quer fazer parte dessa lista?
+          </p>
+          <a href="#contato" className="btn-secondary inline-flex items-center gap-2">
+            Vamos conversar
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Contact Section
+function Contact() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    company: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    
+    // Simula envio - substitua pela integração real
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    setIsSubmitting(false)
+    setSubmitted(true)
+    setFormData({ name: '', email: '', company: '', message: '' })
+    
+    setTimeout(() => setSubmitted(false), 5000)
+  }
+
+  const whatsappNumber = '5519981250530'
+  const whatsappMessage = encodeURIComponent('Olá! Vim pelo site da Time Saving Tech e gostaria de saber mais sobre os serviços de vocês.')
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
+
+  const emailAddress = 'luis@timesavingtech.com.br'
+
+  return (
+    <section id="contato" className="relative py-32 bg-[#0a0a0f] overflow-hidden">
+      <div className="absolute inset-0 bg-radial"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Section header */}
+        <div className="text-center mb-16">
+          <span className="font-mono text-[#00d4ff] text-sm tracking-wider uppercase mb-4 block">
+            // Contato
+          </span>
+          <h2 className="font-display font-bold text-4xl md:text-5xl text-white mb-6">
+            Vamos{' '}
+            <span className="gradient-text">conversar</span>
+          </h2>
+          <p className="text-lg text-[#8b8b9e] max-w-2xl mx-auto">
+            Conte-nos sobre seu desafio. Respondemos em até 24 horas com uma proposta 
+            personalizada para sua necessidade.
+          </p>
+        </div>
+
+        <div className="grid lg:grid-cols-2 gap-12 items-start">
+          {/* Contact form */}
+          <div className="bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-8">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
+                  Nome *
+                </label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
+                  placeholder="Seu nome completo"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
+                  E-mail *
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
+                  placeholder="seu@email.com"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
+                  Empresa
+                </label>
+                <input
+                  type="text"
+                  id="company"
+                  name="company"
+                  value={formData.company}
+                  onChange={handleChange}
+                  placeholder="Nome da sua empresa"
+                />
+              </div>
+              
+              <div>
+                <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
+                  Mensagem *
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                  rows={4}
+                  placeholder="Conte-nos sobre seu projeto ou desafio..."
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="btn-primary w-full flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {isSubmitting ? (
+                  'Enviando...'
+                ) : submitted ? (
+                  <>
+                    <Sparkles className="w-5 h-5" />
+                    Mensagem enviada!
+                  </>
+                ) : (
+                  <>
+                    Enviar mensagem
+                    <ArrowRight className="w-5 h-5" />
+                  </>
+                )}
+              </button>
+            </form>
+          </div>
+
+          {/* Contact options */}
+          <div className="space-y-6">
+            {/* WhatsApp */}
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-6 flex items-center gap-6 group"
+            >
+              <div className="w-14 h-14 rounded-xl bg-[#25D366]/10 flex items-center justify-center border border-[#25D366]/20 group-hover:border-[#25D366]/40 transition-colors">
+                <Phone className="w-7 h-7 text-[#25D366]" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-display font-semibold text-lg text-white mb-1">
+                  WhatsApp
+                </h3>
+                <p className="text-[#8b8b9e]">Resposta rápida para dúvidas urgentes</p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-[#8b8b9e] group-hover:text-white group-hover:translate-x-1 transition-all" />
+            </a>
+
+            {/* Email */}
+            <a
+              href={`mailto:${emailAddress}`}
+              className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-6 flex items-center gap-6 group"
+            >
+              <div className="w-14 h-14 rounded-xl bg-[#00d4ff]/10 flex items-center justify-center border border-[#00d4ff]/20 group-hover:border-[#00d4ff]/40 transition-colors">
+                <Mail className="w-7 h-7 text-[#00d4ff]" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-display font-semibold text-lg text-white mb-1">
+                  E-mail
+                </h3>
+                <p className="text-[#8b8b9e]">{emailAddress}</p>
+              </div>
+              <ArrowRight className="w-5 h-5 text-[#8b8b9e] group-hover:text-white group-hover:translate-x-1 transition-all" />
+            </a>
+
+            {/* Info box */}
+            <div className="bg-gradient-to-br from-[#00d4ff]/5 to-[#7c3aed]/5 border border-[#1e1e2e] rounded-2xl p-6">
+              <h3 className="font-display font-semibold text-white mb-3">
+                Por que escolher a Time Saving?
+              </h3>
+              <ul className="space-y-3 text-[#8b8b9e]">
+                <li className="flex items-start gap-3">
+                  <Zap className="w-5 h-5 text-[#00d4ff] mt-0.5 flex-shrink-0" />
+                  <span>Diagnóstico gratuito da sua operação</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Target className="w-5 h-5 text-[#00d4ff] mt-0.5 flex-shrink-0" />
+                  <span>Soluções customizadas para seu negócio</span>
+                </li>
+                <li className="flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-[#00d4ff] mt-0.5 flex-shrink-0" />
+                  <span>Implementação ágil com resultados rápidos</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Footer
+function Footer() {
+  const currentYear = new Date().getFullYear()
+
+  return (
+    <footer className="bg-[#050508] border-t border-[#1e1e2e] py-12">
+      <div className="max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00d4ff] to-[#7c3aed] flex items-center justify-center">
+              <Clock className="w-4 h-4 text-white" />
+            </div>
+            <span className="font-display font-bold text-lg text-white">
+              Time Saving Tech
+            </span>
+          </div>
+
+          {/* Copyright */}
+          <p className="text-[#8b8b9e] text-sm text-center">
+            © {currentYear} Time Saving Tech. Todos os direitos reservados.
+          </p>
+
+          {/* Links */}
+          <div className="flex items-center gap-6">
+            <a href="#inicio" className="text-[#8b8b9e] hover:text-white text-sm transition-colors">
+              Início
+            </a>
+            <a href="#servicos" className="text-[#8b8b9e] hover:text-white text-sm transition-colors">
+              Serviços
+            </a>
+            <a href="#contato" className="text-[#8b8b9e] hover:text-white text-sm transition-colors">
+              Contato
+            </a>
+          </div>
+        </div>
+      </div>
+    </footer>
+  )
+}
+
+// Main App Component
+export default function App() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0f]">
+      <Navigation />
+      <Hero />
+      <About />
+      <Services />
+      <Clients />
+      <Contact />
+      <Footer />
+    </div>
+  )
+}
