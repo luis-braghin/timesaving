@@ -176,7 +176,7 @@ function About() {
     {
       name: 'Luis Braghin',
       role: 'Co-fundador',
-      description: 'Responsável pela engenharia de soluções da Time Saving Tech. Economista pela UNESP com experiência em estruturação tecnológica no setor bancário, incluindo áreas de Riscos e Planejamento Comercial. Especialista em automação inteligente de processos, integrações via API e desenvolvimento de sistemas RAG. Trabalha com Python, n8n e JavaScript para construir soluções que processam grandes volumes de dados e operam de forma autônoma.',
+      description: 'Responsável pela engenharia de soluções da Time Saving Tech. Economista com experiência em estruturação tecnológica no setor bancário, incluindo áreas de Riscos e Planejamento Comercial. Especialista em automação inteligente de processos, integrações via API e desenvolvimento de sistemas RAG. Trabalha com Python, n8n e JavaScript para construir soluções que processam grandes volumes de dados e operam de forma autônoma.',
     },
     {
       name: 'Felipe Von',
