@@ -214,10 +214,10 @@ function About() {
           <div className="grid gap-6">
             {founders.map((founder, index) => (
               <div
-  key={founder.name}
-  className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-6"
->
-  <div>
+                key={founder.name}
+                className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-6"
+              >
+                <div>
                   <h3 className="font-display font-semibold text-xl text-white mb-1">
                     {founder.name}
                   </h3>
@@ -330,14 +330,11 @@ function Services() {
 
 // Clients Section
 function Clients() {
-  // Array de clientes - fácil de expandir
   const clients = [
     {
-      name: 'Escritório de Advocacia BBL',
-      logo: '/clientes/bbl-logo.jpeg', // Pode adicionar URL do logo depois
+      name: 'BBL Advogados',
+      logo: '/clientes/bbl-logo.jpeg',
     },
-    // Adicione mais clientes aqui:
-    // { name: 'Nome da Empresa', logo: '/path/to/logo.png' },
   ]
 
   return (
@@ -366,17 +363,17 @@ function Clients() {
               className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-8 min-w-[280px] flex items-center justify-center"
             >
               {client.logo ? (
-  <div className="text-center">
-    <img
-      src={client.logo}
-      alt={client.name}
-      className="max-h-16 max-w-[200px] object-contain mx-auto mb-4"
-    />
-    <span className="font-display font-semibold text-white text-lg">
-      {client.name}
-    </span>
-  </div>
-) : (
+                <div className="text-center">
+                  <img
+                    src={client.logo}
+                    alt={client.name}
+                    className="max-h-16 max-w-[200px] object-contain mx-auto mb-4"
+                  />
+                  <span className="font-display font-semibold text-white text-lg">
+                    {client.name}
+                  </span>
+                </div>
+              ) : (
                 <div className="text-center">
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00d4ff]/10 to-[#7c3aed]/10 flex items-center justify-center mx-auto mb-4 border border-[#1e1e2e]">
                     <Target className="w-8 h-8 text-[#00d4ff]" />
@@ -408,12 +405,12 @@ function Clients() {
 // Contact Section
 function Contact() {
   const [formData, setFormData] = useState({
-  name: '',
-  email: '',
-  phone: '',
-  company: '',
-  message: '',
-})
+    name: '',
+    email: '',
+    phone: '',
+    company: '',
+    message: '',
+  })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -422,27 +419,27 @@ function Contact() {
   }
 
   const handleSubmit = async (e) => {
-  e.preventDefault()
-  setIsSubmitting(true)
-  
-  try {
-    await fetch('https://planejamentocomercialtvx.app.n8n.cloud/webhook/ts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
+    e.preventDefault()
+    setIsSubmitting(true)
     
-    setSubmitted(true)
-    setFormData({ name: '', email: '', company: '', message: '' })
-    setTimeout(() => setSubmitted(false), 5000)
-  } catch (error) {
-    alert('Erro ao enviar. Tente novamente ou use o WhatsApp.')
+    try {
+      await fetch('https://planejamentocomercialtvx.app.n8n.cloud/webhook/ts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      })
+      
+      setSubmitted(true)
+      setFormData({ name: '', email: '', phone: '', company: '', message: '' })
+      setTimeout(() => setSubmitted(false), 5000)
+    } catch (error) {
+      alert('Erro ao enviar. Tente novamente ou use o WhatsApp.')
+    }
+    
+    setIsSubmitting(false)
   }
-  
-  setIsSubmitting(false)
-}
 
   const whatsappNumber = '5519981250530'
   const whatsappMessage = encodeURIComponent('Olá! Vim pelo site da Time Saving Tech e gostaria de saber mais sobre os serviços de vocês.')
@@ -476,7 +473,7 @@ function Contact() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-white mb-2">
-                  Nome *
+                  Nome
                 </label>
                 <input
                   type="text"
@@ -491,7 +488,7 @@ function Contact() {
               
               <div>
                 <label htmlFor="email" className="block text-sm font-medium text-white mb-2">
-                  E-mail *
+                  E-mail
                 </label>
                 <input
                   type="email"
@@ -503,29 +500,22 @@ function Contact() {
                   placeholder="seu@email.com"
                 />
               </div>
-              placeholder="seu@email.com"
-            />
-          </div>
-          
-          <div>
-            <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
-              Telefone *
-            </label>
-            <input
-              type="tel"
-              id="phone"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              placeholder="(11) 99999-9999"
-            />
-          </div>
 
-          <div>
-            <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
-              Empresa
-            </label>
+              <div>
+                <label htmlFor="phone" className="block text-sm font-medium text-white mb-2">
+                  Telefone
+                </label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleChange}
+                  required
+                  placeholder="(11) 99999-9999"
+                />
+              </div>
+              
               <div>
                 <label htmlFor="company" className="block text-sm font-medium text-white mb-2">
                   Empresa
@@ -542,7 +532,7 @@ function Contact() {
               
               <div>
                 <label htmlFor="message" className="block text-sm font-medium text-white mb-2">
-                  Mensagem *
+                  Mensagem
                 </label>
                 <textarea
                   id="message"
