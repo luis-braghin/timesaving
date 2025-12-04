@@ -46,9 +46,7 @@ function Navigation() {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <a href="#inicio" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-[#00d4ff] to-[#7c3aed] flex items-center justify-center">
-              <Clock className="w-5 h-5 text-white" />
-            </div>
+            <img src="/logo.svg" alt="Time Saving Tech" className="h-10 w-auto" />
             <span className="font-display font-bold text-xl text-white group-hover:text-[#00d4ff] transition-colors">
               Time Saving<span className="text-[#00d4ff]">.</span>
             </span>
@@ -620,9 +618,7 @@ function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Logo */}
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#00d4ff] to-[#7c3aed] flex items-center justify-center">
-              <Clock className="w-4 h-4 text-white" />
-            </div>
+            <img src="/logo.svg" alt="Time Saving Tech" className="h-8 w-auto" />
             <span className="font-display font-bold text-lg text-white">
               Time Saving Tech
             </span>
