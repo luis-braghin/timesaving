@@ -114,7 +114,6 @@ function Hero() {
       <div className="relative z-10 max-w-7xl mx-auto px-6 py-32 text-center">
         {/* Badge */}
         <div className="inline-flex items-center gap-2 bg-[#12121a] border border-[#1e1e2e] rounded-full px-4 py-2 mb-8 animate-fade-in-up opacity-0">
-          <Sparkles className="w-4 h-4 text-[#00d4ff]" />
           <span className="text-sm text-[#8b8b9e]">Transformando negócios com tecnologia</span>
         </div>
 
