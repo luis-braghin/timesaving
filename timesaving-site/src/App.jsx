@@ -369,12 +369,17 @@ function Clients() {
               className="card-hover bg-[#12121a] border border-[#1e1e2e] rounded-2xl p-8 min-w-[280px] flex items-center justify-center"
             >
               {client.logo ? (
-                <img
-                  src={client.logo}
-                  alt={client.name}
-                  className="max-h-16 max-w-[200px] object-contain filter brightness-90 hover:brightness-100 transition-all"
-                />
-              ) : (
+  <div className="text-center">
+    <img
+      src={client.logo}
+      alt={client.name}
+      className="max-h-16 max-w-[200px] object-contain mx-auto mb-4"
+    />
+    <span className="font-display font-semibold text-white text-lg">
+      {client.name}
+    </span>
+  </div>
+) : (
                 <div className="text-center">
                   <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-[#00d4ff]/10 to-[#7c3aed]/10 flex items-center justify-center mx-auto mb-4 border border-[#1e1e2e]">
                     <Target className="w-8 h-8 text-[#00d4ff]" />
