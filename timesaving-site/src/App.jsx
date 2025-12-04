@@ -337,7 +337,7 @@ function Clients() {
   const clients = [
     {
       name: 'Escritório de Advocacia BBL',
-      logo: null, // Pode adicionar URL do logo depois
+      logo: '/clientes/bbl-logo.jpeg', // Pode adicionar URL do logo depois
     },
     // Adicione mais clientes aqui:
     // { name: 'Nome da Empresa', logo: '/path/to/logo.png' },
